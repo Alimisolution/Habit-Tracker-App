@@ -18,7 +18,7 @@ const RouteGuard = ({ children }: { children: React.ReactNode }) => {
     } else if (user && inAuthGroup && !isLoadingUser) {
       router.replace("/");
     }
-  }, [user, segment]);
+  }, [user, segment, isLoadingUser]);
   return <>{children}</>;
 };
 
@@ -31,6 +31,7 @@ export default function RootLayout() {
           <RouteGuard>
             <Stack>
               <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+              <Stack.Screen name="auth" options={{ headerShown: false }} />
             </Stack>
           </RouteGuard>
         </SafeAreaProvider>
